@@ -13,6 +13,7 @@ For instance, to use this boiletplate as the building block for your own PCF app
     git remote add origin https://github.com/vatsan/myapp.git
     git push origin master
 
+
 Now your repo `myapp`, will contain the boiletplate code. You may start customizing this repo for your app, going forward (ex: changing pplication name, author, contact info, images etc.)
 
 Pre-requisites
@@ -56,14 +57,15 @@ Starting the app locally
     port: <YOUR PORT>
     user: <YOUR USERNAME>
     database: <YOUR DATABASE>
-    password: <YOUR PASSOWRD>
+    password: <YOUR PASSWORD>
+
 
 2. Ensure your local machine can talk to the environment where the data resides in (ex: you may need to connect to a VPN if your data resides on a BDS cluster behind a firewall).
 3. Run the following from the root directory
 
     ./deploy
 
-This will bring up the app on http://localhost:9090
+This will bring up the app on `http://localhost:9090`
 
 Pushing the app to PCF
 ======================
