@@ -84,3 +84,14 @@ Pushing the app to PCF
         dsmiot [master●●] cf bind-service dspcfboilerplate dspcfboilerplatecreds
 
 The app should now be accessible on your PCF instance. 
+
+Screenshots
+============
+
+Here are some sample screenshots of the boilerplate app in action:
+
+![screen_1](/../gh-pages/images/dspcfboilerplate_screen_1.png)
+
+![screen_2](/../gh-pages/images/dspcfboilerplate_screen_2.png)
+
+![screen_3](/../gh-pages/images/dspcfboilerplate_screen_3.png)
