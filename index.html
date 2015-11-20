@@ -55,8 +55,9 @@ For instance, to use this boiletplate as the building block for your own PCF app
 <li>
 <p>From your renamed directory containing the boilerplate (<code>myapp</code>), run the following to push the boilerplate code to your newly created GitHub repo <code>MyApp</code></p>
 
-<p>git remote add origin <a href="https://github.com/vatsan/myapp.git">https://github.com/vatsan/myapp.git</a>
-git push origin master</p>
+<pre><code>git remote add origin https://github.com/vatsan/myapp.git
+git push origin master
+</code></pre>
 </li>
 </ol>
 
@@ -101,18 +102,20 @@ The <code>requirements.txt</code> file lists all python packages that are only a
 <li>
 <p>Create a file <code>dspcfapp/user.cred</code> with the relevant database access credentials like the following. This file will not be added to your version control (the <code>.gitignore</code> file will filter it out):</p>
 
-<p>[database_creds]
-host: 
-port: 
-user: 
-database: 
-password: </p>
+<pre><code>[database_creds]
+host: &lt;YOUR HOSTNAME&gt;
+port: &lt;YOUR PORT&gt;
+user: &lt;YOUR USERNAME&gt;
+database: &lt;YOUR DATABASE&gt;
+password: &lt;YOUR PASSWORD&gt;
+</code></pre>
 </li>
 <li><p>Ensure your local machine can talk to the environment where the data resides in (ex: you may need to connect to a VPN if your data resides on a BDS cluster behind a firewall).</p></li>
 <li>
 <p>Run the following from the root directory</p>
 
-<p>./deploy</p>
+<pre><code>./deploy
+</code></pre>
 </li>
 </ol>
 
@@ -125,21 +128,35 @@ password: </p>
 <li>
 <p>Push the app to your PCF instance (assuming you've set one up)</p>
 
-<p>dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml    </p>
+<pre><code>dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml    
+</code></pre>
 </li>
 <li>
 <p>Create User Provided Service for database credentials (first time only)</p>
 
-<p>dsmiot [master●●] cf cups dspcfboilerplatecreds -p '{"host":"","user":"","password":"", "databasename":"", "port":"" }'</p>
+<pre><code>dsmiot [master●●] cf cups dspcfboilerplatecreds -p '{"host":"&lt;HOST&gt;","user":"&lt;USER&gt;","password":"&lt;PASSWORD&gt;", "databasename":"&lt;DATABASE&gt;", "port":"&lt;PORT&gt;" }'
+</code></pre>
 </li>
 <li>
 <p>Bind the User Provided Service to the app (first time only)</p>
 
-<p>dsmiot [master●●] cf bind-service dspcfboilerplate dspcfboilerplatecreds</p>
+<pre><code>dsmiot [master●●] cf bind-service dspcfboilerplate dspcfboilerplatecreds
+</code></pre>
 </li>
 </ol>
 
 <p>The app should now be accessible on your PCF instance. </p>
+
+<h1>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h1>
+
+<p>Here are some sample screenshots of the boilerplate app in action:</p>
+
+<p><img src="/../gh-pages/images/dspcfboilerplate_screen_1.png" alt="screen_1"></p>
+
+<p><img src="/../gh-pages/images/dspcfboilerplate_screen_2.png" alt="screen_2"></p>
+
+<p><img src="/../gh-pages/images/dspcfboilerplate_screen_3.png" alt="screen_3"></p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/vatsan">vatsan</a></p>
