@@ -10,14 +10,15 @@ For instance, to use this boiletplate as the building block for your own PCF app
 3. Rename the cloned repo to whatever you choose it to be (ex: myapp) `mv dspcfboilerplate myapp`
 4. From your renamed directory containing the boilerplate (`myapp`), run the following to push the boilerplate code to your newly created GitHub repo `MyApp`
 
-    git remote add origin https://github.com/vatsan/myapp.git
-    git push origin master
+        git remote add origin https://github.com/vatsan/myapp.git
+        git push origin master
 
 
 Now your repo `myapp`, will contain the boiletplate code. You may start customizing this repo for your app, going forward (ex: changing pplication name, author, contact info, images etc.)
 
 Pre-requisites
 ==============
+
 The `conda_requirements.txt` file lists all the python packages that are available via `conda` and are pre-requisites for this app.
 The `requirements.txt` file lists all python packages that are only available through `pip` and are pre-requisities for this app.
 
@@ -52,18 +53,18 @@ Starting the app locally
 
 1. Create a file ```dspcfapp/user.cred``` with the relevant database access credentials like the following. This file will not be added to your version control (the `.gitignore` file will filter it out):
 
-    [database_creds]
-    host: <YOUR HOSTNAME>
-    port: <YOUR PORT>
-    user: <YOUR USERNAME>
-    database: <YOUR DATABASE>
-    password: <YOUR PASSWORD>
+        [database_creds]
+        host: <YOUR HOSTNAME>
+        port: <YOUR PORT>
+        user: <YOUR USERNAME>
+        database: <YOUR DATABASE>
+        password: <YOUR PASSWORD>
 
 
 2. Ensure your local machine can talk to the environment where the data resides in (ex: you may need to connect to a VPN if your data resides on a BDS cluster behind a firewall).
 3. Run the following from the root directory
 
-    ./deploy
+        ./deploy
 
 This will bring up the app on `http://localhost:9090`
 
@@ -72,14 +73,14 @@ Pushing the app to PCF
 
 1. Push the app to your PCF instance (assuming you've set one up)
 
-    dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml    
+        dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml    
 
 2. Create User Provided Service for database credentials (first time only)
 
-    dsmiot [master●●] cf cups dspcfboilerplatecreds -p '{"host":"<HOST>","user":"<USER>","password":"<PASSWORD>", "databasename":"<DATABASE>", "port":"<PORT>" }'
+        dsmiot [master●●] cf cups dspcfboilerplatecreds -p '{"host":"<HOST>","user":"<USER>","password":"<PASSWORD>", "databasename":"<DATABASE>", "port":"<PORT>" }'
 
 3. Bind the User Provided Service to the app (first time only)
 
-    dsmiot [master●●] cf bind-service dspcfboilerplate dspcfboilerplatecreds
+        dsmiot [master●●] cf bind-service dspcfboilerplate dspcfboilerplatecreds
 
 The app should now be accessible on your PCF instance. 
