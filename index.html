@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>DS Apps on PCF - Boilerplate Code by vatsan</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>DS Apps on PCF - Boilerplate Code</h1>
+        <p>Boilerplate code for flask apps on PCF that interact with a backend environment (ex: Pivotal BDS).</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/vatsan/dspcfboilerplate" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/vatsan/dspcfboilerplate/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/vatsan/dspcfboilerplate/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a id="boilerplate-for-flask-apps-for-data-science-on-pcf" class="anchor" href="#boilerplate-for-flask-apps-for-data-science-on-pcf" aria-hidden="true"><span class="octicon octicon-link"></span></a>Boilerplate for Flask Apps for Data Science on PCF</h1>
+
+<p>This repo contains boilerplate code for your to build your apps on PCF using Flask and psycopg2.
+You can checkout this repo into a remote empty repo of your own on GitHub or elsewhere, and customize it appropriate to spin up your own app.
+For instance, to use this boiletplate as the building block for your own PCF app, you can do the following:</p>
+
+<ol>
+<li>Create an empty repo on GitHub, let's call it MyApp and it's URL is <code>https://github.com/vatsan/myapp.git</code>
+</li>
+<li>Run <code>git clone https://github.com/vatsan/dspcfboilerplate.git</code>. This will clone the boilerplate repo into a local folder on your machine.</li>
+<li>Rename the cloned repo to whatever you choose it to be (ex: myapp) <code>mv dspcfboilerplate myapp</code>
+</li>
+<li>
+<p>From your renamed directory containing the boilerplate (<code>myapp</code>), run the following to push the boilerplate code to your newly created GitHub repo <code>MyApp</code></p>
+
+<p>git remote add origin <a href="https://github.com/vatsan/myapp.git">https://github.com/vatsan/myapp.git</a>
+git push origin master</p>
+</li>
+</ol>
+
+<p>Now your repo <code>myapp</code>, will contain the boiletplate code. You may start customizing this repo for your app, going forward (ex: changing pplication name, author, contact info, images etc.)</p>
+
+<h1>
+<a id="pre-requisites" class="anchor" href="#pre-requisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pre-requisites</h1>
+
+<p>The <code>conda_requirements.txt</code> file lists all the python packages that are available via <code>conda</code> and are pre-requisites for this app.
+The <code>requirements.txt</code> file lists all python packages that are only available through <code>pip</code> and are pre-requisities for this app.</p>
+
+<h1>
+<a id="code-organization" class="anchor" href="#code-organization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code Organization</h1>
+
+<pre><code>dspcfboilerplate/ # root level folder containing all package files &amp; app files
+    README.md # This file
+    conda_requirements.txt # file containing all `conda` packages needed by this app.
+    requirements.txt # file containing all `pip` packages needed by this app (not available via `conda`)
+    deploy # bash script to deploy this app (either locally or on PCF)
+    setup.py # python packaging tools
+    MANIFEST.in #Manifest file for python packaging (what files to include into the python package)
+    LICENSE.txt #License for this app    
+    predim/
+        server.py #Main module containing all controller code
+        static/
+           css/ #All user specified css. These will be bundled &amp; minified into "gen/user_css.css" by Flask-Assets.    
+           data/   
+           img/    
+           js/ #All user specified javascript. These will all be bundled &amp; minified into "gen/user_js.js" by Flask-Assets.    
+           vendor/ #All bootstrap.js related files (css &amp; javascript)
+        templates/ #HTML templates
+           layout.html  #Base layout from which every page will inherit. This also contains javascript &amp; css inserts
+           home.html #home page template
+           about.html #about page template
+           contact.html #contact page template
+</code></pre>
+
+<h1>
+<a id="starting-the-app-locally" class="anchor" href="#starting-the-app-locally" aria-hidden="true"><span class="octicon octicon-link"></span></a>Starting the app locally</h1>
+
+<ol>
+<li>
+<p>Create a file <code>dspcfapp/user.cred</code> with the relevant database access credentials like the following. This file will not be added to your version control (the <code>.gitignore</code> file will filter it out):</p>
+
+<p>[database_creds]
+host: 
+port: 
+user: 
+database: 
+password: </p>
+</li>
+<li><p>Ensure your local machine can talk to the environment where the data resides in (ex: you may need to connect to a VPN if your data resides on a BDS cluster behind a firewall).</p></li>
+<li>
+<p>Run the following from the root directory</p>
+
+<p>./deploy</p>
+</li>
+</ol>
+
+<p>This will bring up the app on <code>http://localhost:9090</code></p>
+
+<h1>
+<a id="pushing-the-app-to-pcf" class="anchor" href="#pushing-the-app-to-pcf" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pushing the app to PCF</h1>
+
+<ol>
+<li>
+<p>Push the app to your PCF instance (assuming you've set one up)</p>
+
+<p>dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml    </p>
+</li>
+<li>
+<p>Create User Provided Service for database credentials (first time only)</p>
+
+<p>dsmiot [master●●] cf cups dspcfboilerplatecreds -p '{"host":"","user":"","password":"", "databasename":"", "port":"" }'</p>
+</li>
+<li>
+<p>Bind the User Provided Service to the app (first time only)</p>
+
+<p>dsmiot [master●●] cf bind-service dspcfboilerplate dspcfboilerplatecreds</p>
+</li>
+</ol>
+
+<p>The app should now be accessible on your PCF instance. </p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/vatsan">vatsan</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
