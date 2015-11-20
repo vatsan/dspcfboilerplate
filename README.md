@@ -6,9 +6,14 @@ You can checkout this repo into a remote empty repo of your own on GitHub or els
 For instance, to use this boiletplate as the building block for your own PCF app, you can do the following:
 
 1. Create an empty repo on GitHub, let's call it MyApp and it's URL is `https://github.com/vatsan/myapp.git`
-2. Run `git clone https://github.com/vatsan/dspcfboilerplate.git`
-3. Rename the cloned repo to whatever you choose it to be (ex: myapp) `mv dspcfboilerplate myapp`.
-4. From your renamed directory containing the boilerplate (myapp), run `git remote add origin https://github.com/vatsan/myapp.git` followed by `git push origin master`. Now your repo myapp, will contain the boiletplate code. You may start customizing this repo for your app, going forward (ex: changing pplication name, author, contact info, images etc.)
+2. Run `git clone https://github.com/vatsan/dspcfboilerplate.git`. This will clone the boilerplate repo into a local folder on your machine.
+3. Rename the cloned repo to whatever you choose it to be (ex: myapp) `mv dspcfboilerplate myapp`
+4. From your renamed directory containing the boilerplate (`myapp`), run the following to push the boilerplate code to your newly created GitHub repo `MyApp`
+
+    git remote add origin https://github.com/vatsan/myapp.git
+    git push origin master
+
+Now your repo `myapp`, will contain the boiletplate code. You may start customizing this repo for your app, going forward (ex: changing pplication name, author, contact info, images etc.)
 
 Pre-requisites
 ==============
