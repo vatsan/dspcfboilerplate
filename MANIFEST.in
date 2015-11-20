@@ -1,0 +1,6 @@
+include *.md
+include *.txt
+include *.py
+include dspcfapp/user.cred
+recursive-include dspcfapp/templates *
+recursive-include dspcfapp/static *

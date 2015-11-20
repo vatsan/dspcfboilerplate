@@ -1,0 +1,112 @@
+.full {
+   background: url('../img/bg-cloud-native-hero.jpg') no-repeat center center fixed;
+}
+
+.custom-spinner {
+   width: 30 px;
+   height: 30 px;
+}
+
+.panel-transparent .panel-heading{
+   background: rgba(122, 130, 136, 0.2);
+}
+.panel-transparent .panel-body{
+   background: rgba(46, 51, 56, 0.2);
+}
+
+/* D3.js heatmap */
+rect.bordered {
+    stroke: #E6E6E6;
+    stroke-width:2px;   
+}
+
+text.mono {
+    font-size: 9pt;
+    font-family: Consolas, courier;
+    fill: #aaa;
+}
+
+text.axis-workweek {
+    fill: #000;
+}
+
+text.axis-worktime {
+    fill: #000;
+}
+
+/* End of d3.js heatmap */
+
+/* Line chart */
+.axis path {
+    fill: none;
+    stroke: #888;
+}
+
+.axis line {
+    fill: none;
+    stroke: #888;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+.line {
+    fill: none;
+}
+/* End of line chart */
+
+/* Tooltip */
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+/* End of tooltip*/
+
+
+/* Bar plot for model coefficients */
+
+.bar.positive {
+  fill: seagreen;
+}
+
+.bar.negative {
+  fill: orangered;
+}
+
+.bar.text {
+  fill: black;
+  font: 14px sans-serif;
+  opacity: 0.6;
+  text-anchor: end;
+}
+
+/* End of model coefficients */

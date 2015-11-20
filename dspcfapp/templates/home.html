@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id='headline' class="text-center">
+    <script type="text/javascript">
+    $(document).ready( 
+        function () {
+           setTimeout(
+               function(){
+                   /* Remove the background image */
+                   $('.full').css("background-color","#ffffff");
+                   $('.full').css("background-image","none");
+                   
+                   /* Spinner for heatmap plots */
+                   d3.select("#heatmap").html("\<h1 class=\"text-center\">Sample Heatmap\</h1>"+"\<br>"+  
+                   "\<span id='hmap_spinner'>\<img src='../img/spinner.gif' class=\"custom-spinner\">\</span>"
+                   );
+                                      
+                   /* Fetch data for heatmap */
+                   $.getJSON("/_hmap", function (data) { 
+                       drawHeatmap(data.hmap);
+                   });          
+                                                     
+               },
+               /* Timeout before the heatmap is rendered */ 
+               5000);
+        });
+    </script>
+</div>
+<div id='heatmap' class="text-center">
+</div>
+<div id='modelcoefs' class="text-center">
+</div>
+<div id='tseries' class="text-center">
+</div>
+<div id='tseries_nvd3' class="text-center">
+</div>
+{% endblock %}

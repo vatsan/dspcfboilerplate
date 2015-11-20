@@ -1,0 +1,14 @@
+#!/bin/bash
+if [ $VCAP_APP_PORT]; 
+   then
+       PYTHON='.conda/bin/python'
+       echo 'Using python:'$PYTHON
+   else 
+       PYTHON=`which python`
+       echo 'Using python:'$PYTHON
+fi
+#Install the app
+$PYTHON setup.py build
+$PYTHON setup.py install
+#Start the webserver
+$PYTHON -m dspcfapp
