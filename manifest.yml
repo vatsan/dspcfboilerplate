@@ -7,4 +7,5 @@ applications:
   host: predimcf
   buildpack: git://github.com/ihuston/python-conda-buildpack.git
   timeout: 180
+  stack: cflinuxfs2
   command: bash deploy

@@ -15,7 +15,7 @@ from sql.queries import *
 app = Flask(__name__)
 
 #init logger
-logging.basicConfig(level= logging.DEBUG if not os.getenv('VCAP_APP_PORT') \
+logging.basicConfig(level= logging.DEBUG if not os.getenv('PORT') \
         else logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -24,13 +24,13 @@ bundles = {
     'user_js': Bundle(
             #all your javascript files in static folder, go here
             'js/heatmap.js',
-            filters='jsmin' if os.getenv('VCAP_APP_PORT') else None, #minify if deploying on CF
+            filters='jsmin' if os.getenv('PORT') else None, #minify if deploying on CF
             output='gen/user.js',
         ),
     'user_css': Bundle(
             #all your css files in the static folder, go here
            'css/custom.css',
-            filters='jsmin' if os.getenv('VCAP_APP_PORT') else None, #minify if deploying on CF
+            filters='jsmin' if os.getenv('PORT') else None, #minify if deploying on CF
             output='gen/user.css'
         )   
 }
@@ -105,5 +105,5 @@ def main():
     """
        Start the application
     """
-    app_port = int(os.getenv('VCAP_APP_PORT')) if os.getenv('VCAP_APP_PORT') else DEFAULT_PORT
-    app.run(host='0.0.0.0', debug= True if not os.getenv('VCAP_APP_PORT') else False, port = app_port)
+    app_port = int(os.getenv('PORT')) if os.getenv('PORT') else DEFAULT_PORT
+    app.run(host='0.0.0.0', debug= True if not os.getenv('PORT') else False, port = app_port)

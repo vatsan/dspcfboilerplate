@@ -19,8 +19,8 @@ class DBConnect(object):
         self.logger = logger
         host, port, user, database, password, app_port = None, None, None, None, None, None
         if(not conn_str):
-            if(os.getenv("VCAP_APP_PORT")):
-                app_port = int(os.getenv("VCAP_APP_PORT"))
+            if(os.getenv("PORT")):
+                app_port = int(os.getenv("PORT"))
                 vcap_services = json.loads(os.environ['VCAP_SERVICES'])
                 creds = vcap_services['user-provided'][0]['credentials']
                 host = creds['host']

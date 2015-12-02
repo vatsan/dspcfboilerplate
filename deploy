@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ $VCAP_APP_PORT]; 
+if [ $PORT ]; 
    then
        PYTHON='.conda/bin/python'
        echo 'Using python:'$PYTHON
