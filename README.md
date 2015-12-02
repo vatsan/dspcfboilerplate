@@ -14,7 +14,7 @@ For instance, to use this boiletplate as the building block for your own PCF app
         git push origin master
 
 
-Now your repo `myapp`, will contain the boiletplate code. You may start customizing this repo for your app, going forward (ex: changing pplication name, author, contact info, images etc.)
+Now your repo `myapp`, will contain the boilerplate code. You may start customizing this repo for your app going forward (ex: changing application name, author, contact info, images etc.)
 
 Pre-requisites
 ==============
