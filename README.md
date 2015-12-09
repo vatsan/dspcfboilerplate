@@ -9,6 +9,7 @@ For instance, to use this boiletplate as the building block for your own PCF app
 2. Run `git clone https://github.com/vatsan/dspcfboilerplate.git`. This will clone the boilerplate repo into a local folder on your machine.
 3. Rename the cloned repo to whatever you choose it to be (ex: myapp) `mv dspcfboilerplate myapp`
 4. From your renamed directory containing the boilerplate (`myapp`), run the following to push the boilerplate code to your newly created GitHub repo `MyApp`
+
         git remote rm origin
         git remote add origin https://github.com/vatsan/myapp.git
         git push origin master
