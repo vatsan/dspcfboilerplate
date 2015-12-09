@@ -96,3 +96,9 @@ Here are some sample screenshots of the boilerplate app in action:
 ![screen_2](docs/images/dspcfboilerplate_screen_2.png)
 
 ![screen_3](docs/images/dspcfboilerplate_screen_3.png)
+
+Projects using this template
+=============================
+
+[cbirapp](https://github.com/gautamsm/cbirapp/)
+
