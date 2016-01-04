@@ -34,7 +34,7 @@ Code Organization
         setup.py # python packaging tools
         MANIFEST.in #Manifest file for python packaging (what files to include into the python package)
         LICENSE.txt #License for this app    
-        predim/
+        dspcfapp/
             server.py #Main module containing all controller code
             static/
                css/ #All user specified css. These will be bundled & minified into "gen/user_css.css" by Flask-Assets.    
