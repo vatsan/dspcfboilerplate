@@ -1,7 +1,7 @@
 ---
 # Manifest to deploy your app
 applications:
-- name: predimcf
+- name: dspcfapp
   memory: 1G
   instances: 1
   host: predimcf
