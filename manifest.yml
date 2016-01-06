@@ -4,7 +4,7 @@ applications:
 - name: dspcfboilerplate
   memory: 1G
   instances: 1
-  host: predimcf
+  host: dspcfboilerplate
   buildpack: git://github.com/ihuston/python-conda-buildpack.git
   timeout: 180
   stack: cflinuxfs2
