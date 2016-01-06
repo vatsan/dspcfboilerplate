@@ -72,13 +72,13 @@ This will bring up the app on `http://localhost:9090`
 Pushing the app to PCF
 ======================
 
-1. Push the app to your PCF instance (assuming you've set one up)
-
-        dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml    
-
-2. Create User Provided Service for database credentials (first time only)
+1. Create User Provided Service for database credentials (first time only)
 
         dsmiot [master●●] cf cups dspcfboilerplatecreds -p '{"host":"<HOST>","user":"<USER>","password":"<PASSWORD>", "database":"<DATABASE>", "port":"<PORT>" }'
+
+2. Push the app to your PCF instance (assuming you've set one up)
+
+        dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml    
 
 3. Bind the User Provided Service to the app (first time only)
 
