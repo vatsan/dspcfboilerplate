@@ -19,15 +19,24 @@ class DBConnect(object):
         self.logger = logger
         host, port, user, database, password, app_port = None, None, None, None, None, None
         if(not conn_str):
-            if(os.getenv("PORT")):
+            if(os.getenv("PORT") and os.getenv("SERVICE_NAME")):
                 app_port = int(os.getenv("PORT"))
                 vcap_services = json.loads(os.environ['VCAP_SERVICES'])
-                creds = vcap_services['user-provided'][0]['credentials']
-                host = creds['host']
-                user = creds['user']
-                database = creds['database']
-                password = creds['password']
-                port = creds['port']
+                creds = vcap_services[os.getenv("SERVICE_NAME")][0]['credentials']
+		if(creds.has_key('uri')):
+		    uri = creds['uri']
+                    #URI is of the form: "postgres://username:password@hostname:port/database"
+		    host = uri.split('@')[-1].split(':')[0]
+		    user = uri.split('://')[-1].split(':')[0]
+		    password = uri.split('://')[-1].split(':')[1].split('@')[0]
+		    database = uri.split('/')[-1]
+		    port = uri.split(':')[-1].split('/')[0]
+		else:
+		    host = creds['host']
+                    user = creds['user']
+                    database = creds['database']
+                    password = creds['password']
+                    port = creds['port']
             else:
                 #default port
                 app_port = DEFAULT_PORT

@@ -69,8 +69,11 @@ Starting the app locally
 
 This will bring up the app on `http://localhost:9090`
 
-Pushing the app to PCF
-======================
+Pushing the app to PCF with user-provided service
+==================================================
+
+A user-provided service to let your app know what database, host and port to connect to using what credentials.
+If you are doing all your datascience on a Greenplum or HAWQ cluster, this is the preferred way of binding your app to the cluster.
 
 1. Create User Provided Service for database credentials (first time only)
 
@@ -85,6 +88,23 @@ Pushing the app to PCF
         dsmiot [master●●] cf bind-service dspcfboilerplate dspcfboilerplatecreds
 
 The app should now be accessible on your PCF instance. 
+
+Pushing the app to PCF with ElephantSQL as a service
+=====================================================
+
+If you are running your app on PWS (run.pivotal.io) and would like to bind your app to say a `tiny turtle` ElephantSQL service you may have created, you can follow these steps:
+
+1. Edit the dspcfboilerplate/deploy file and change the environment variable `SERVICE_NAME` to the name of your service( ex: elephantsql-dev)
+
+2. Push the app to your PCF instance
+
+	dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml
+
+3. Bind your ElphantSQL service to your app (first time only)
+	
+	dsmiot [master●●] cf bind-service dspcfboilerplate elephantsql-dev
+ 
+Your app will now use your ElephantSQL service as the backend database to connect to.
 
 Screenshots
 ============
