@@ -94,15 +94,15 @@ Pushing the app to PCF with ElephantSQL as a service
 
 If you are running your app on PWS (run.pivotal.io) and would like to bind your app to say a `tiny turtle` ElephantSQL service you may have created, you can follow these steps:
 
-1. Edit the dspcfboilerplate/deploy file and change the environment variable `SERVICE_NAME` to the name of your service( ex: elephantsql-dev)
+1. Edit the dspcfboilerplate/deploy file and change the environment variable `SERVICE_NAME` to the name of your ElephantSQL service instance(ex: `elephantsql-dev`)
 
 2. Push the app to your PCF instance
 
-	dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml
+        dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml
 
 3. Bind your ElphantSQL service to your app (first time only)
 	
-	dsmiot [master●●] cf bind-service dspcfboilerplate elephantsql-dev
+        dsmiot [master●●] cf bind-service dspcfboilerplate elephantsql-dev
  
 Your app will now use your ElephantSQL service as the backend database to connect to.
 
