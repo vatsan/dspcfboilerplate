@@ -22,11 +22,8 @@ Projects using this template
 
 [cbirapp](https://github.com/gautamsm/cbirapp/)
 
-![TASA Animated GIF](https://github.com/pivotalsoftware/tasa/raw/gh-pages/images/tasacf_animated_highres.gif)
+![CBIR demo](https://github.com/gautamsm/cbirapp/raw/gh-pages/images/cbirapp_animated.gif)
 
-
-
-[]
 
 Pre-requisites
 ==============
