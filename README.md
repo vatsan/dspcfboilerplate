@@ -1,10 +1,10 @@
 Projects using this template
 =============================
 
-[Topic and Sentiment Analysis Engine](https://github.com/pivotalsoftware/tasa)
-[Content Based Image Retrieval](https://github.com/gautamsm/cbirapp/)
-[Lateral Movement Detection](https://github.com/pivotalsoftware/dsmlatmov)
-[Predictive Maintenance for Drilling Operations](https://github.com/pivotalsoftware/dsmiot)
+* [Topic and Sentiment Analysis Engine](https://github.com/pivotalsoftware/tasa)
+* [Content Based Image Retrieval](https://github.com/gautamsm/cbirapp/)
+* [Lateral Movement Detection](https://github.com/pivotalsoftware/dsmlatmov)
+* [Predictive Maintenance for Drilling Operations](https://github.com/pivotalsoftware/dsmiot)
 
 ![TASA demo](https://github.com/pivotalsoftware/tasa/raw/gh-pages/images/tasacf_animated_highres.gif)
 ![CBIR demo](https://github.com/gautamsm/cbirapp/raw/gh-pages/images/cbirapp_animated.gif)
