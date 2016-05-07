@@ -6,7 +6,7 @@ Projects using this template
 [Lateral Movement Detection](https://github.com/pivotalsoftware/dsmlatmov)
 [Predictive Maintenance for Drilling Operations](https://github.com/pivotalsoftware/dsmiot)
 
-![TASA demo](https://github.com/pivotalsoftware/tasa/raw/gh-pages/images/tasacf_animated_lowres.gif)
+![TASA demo](https://github.com/pivotalsoftware/tasa/raw/gh-pages/images/tasacf_animated_highres.gif)
 ![CBIR demo](https://github.com/gautamsm/cbirapp/raw/gh-pages/images/cbirapp_animated.gif)
 ![Lateral movement demo](https://github.com/pivotalsoftware/dsmlatmov/raw/gh-pages/img/dsmlatmov_1080p.gif)
 ![Predictive Maintenance for Drilling Operations](https://github.com/pivotalsoftware/dsmiot/raw/gh-pages/img/predim_1080p.gif)
