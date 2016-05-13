@@ -5,6 +5,7 @@ Projects using this template
 * [Content Based Image Retrieval](https://github.com/gautamsm/cbirapp/)
 * [Lateral Movement Detection](https://github.com/pivotalsoftware/dsmlatmov)
 * [Predictive Maintenance for Drilling Operations](https://github.com/pivotalsoftware/dsmiot)
+* [Audio Fingerprinting](https://audiofingapp.pcf1-rdu.nasa.pivotal.io/)
 
 ![TASA demo](https://github.com/pivotalsoftware/tasa/raw/gh-pages/images/tasacf_animated_highres.gif)
 ![CBIR demo](https://github.com/gautamsm/cbirapp/raw/gh-pages/images/cbirapp_animated.gif)
