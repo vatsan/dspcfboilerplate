@@ -11,6 +11,7 @@ Projects using this template
 ![CBIR demo](https://github.com/gautamsm/cbirapp/raw/gh-pages/images/cbirapp_animated.gif)
 ![Lateral movement demo](https://github.com/pivotalsoftware/dsmlatmov/raw/gh-pages/img/dsmlatmov_1080p.gif)
 ![Predictive Maintenance for Drilling Operations](https://github.com/pivotalsoftware/dsmiot/raw/gh-pages/img/predim_1080p.gif)
+![Audio Fingerprinting Animated gif](https://github.com/regunathanr/audio_fingerprinting_mpp/raw/gh-pages/images/audio_fing_demo.gif)
 
 
 Boilerplate for Flask Apps for Data Science on PCF
