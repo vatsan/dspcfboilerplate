@@ -1,1 +1,1 @@
-web: gunicorn dspcfapp:app
+web: gunicorn dspcfapp.app:app
