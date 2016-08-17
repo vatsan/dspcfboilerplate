@@ -21,18 +21,17 @@ class DBConnect(object):
         if(not conn_str):
             if(os.getenv("PORT") and os.getenv("SERVICE_NAME")):
                 app_port = int(os.getenv("PORT"))
-                vcap_services = json.loads(os.environ['VCAP_SERVICES'])
-                creds = vcap_services[os.getenv("SERVICE_NAME")][0]['credentials']
-		if(creds.has_key('uri')):
-		    uri = creds['uri']
+                database_url = os.environ['DATABASE_URL']
+                if(database_url):
+                    uri = database_url
                     #URI is of the form: "postgres://username:password@hostname:port/database"
-		    host = uri.split('@')[-1].split(':')[0]
-		    user = uri.split('://')[-1].split(':')[0]
-		    password = uri.split('://')[-1].split(':')[1].split('@')[0]
-		    database = uri.split('/')[-1]
-		    port = uri.split(':')[-1].split('/')[0]
-		else:
-		    host = creds['host']
+                    host = uri.split('@')[-1].split(':')[0]
+                    user = uri.split('://')[-1].split(':')[0]
+                    password = uri.split('://')[-1].split(':')[1].split('@')[0]
+                    database = uri.split('/')[-1]
+                    port = uri.split(':')[-1].split('/')[0]
+                else:
+                    host = creds['host']
                     user = creds['user']
                     database = creds['database']
                     password = creds['password']
@@ -76,14 +75,14 @@ class DBConnect(object):
         ping_cmd = """select 1;"""
         conn_alive = True
         isQuery = True
-	conn_from_pool = self.pool.getconn()
+        conn_from_pool = self.pool.getconn()
         try:
             df = psql.read_sql(ping_cmd, conn_from_pool)
         except psycopg2.Error, e:
             self.logger.error('Database connection is not alive: '+str(e))
             conn_alive = False
         finally:
-	    self.pool.putconn(conn_from_pool)
+            self.pool.putconn(conn_from_pool)
         return conn_alive
 
     def __reconnect_if_closed__(self, conn_str=None):
@@ -100,7 +99,7 @@ class DBConnect(object):
            Execute query
         """
         self.__reconnect_if_closed__()
-	conn_from_pool = self.pool.getconn()
-	df = psql.read_sql(query, conn_from_pool)
-	self.pool.putconn(conn_from_pool)
+        conn_from_pool = self.pool.getconn()
+        df = psql.read_sql(query, conn_from_pool)
+        self.pool.putconn(conn_from_pool)
         return df
