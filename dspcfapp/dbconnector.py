@@ -19,7 +19,7 @@ class DBConnect(object):
         self.logger = logger
         host, port, user, database, password, app_port = None, None, None, None, None, None
         if(not conn_str):
-            if(os.getenv("PORT") and os.getenv("SERVICE_NAME")):
+            if(os.getenv("PORT")):
                 app_port = int(os.getenv("PORT"))
                 database_url = os.environ['DATABASE_URL']
                 if(database_url):
