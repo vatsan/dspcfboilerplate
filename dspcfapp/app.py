@@ -1,2 +1,2 @@
-from dspcfapp import server
+import server
 server.main()
