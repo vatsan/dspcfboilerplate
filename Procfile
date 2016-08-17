@@ -1,1 +1,1 @@
-web: python dspcfapp/app.py 
+web: gunicorn dspcfapp:app
