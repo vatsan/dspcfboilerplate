@@ -107,3 +107,6 @@ def main():
     """
     app_port = int(os.environ.get('PORT',33512))
     app.run(host='0.0.0.0',  port = app_port)
+
+if __name__ == '__main__':
+    main()
