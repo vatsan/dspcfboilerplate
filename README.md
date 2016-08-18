@@ -62,65 +62,126 @@ Code Organization
                layout.html  #Base layout from which every page will inherit. This also contains javascript & css inserts
                home.html #home page template
                about.html #about page template
-               contact.html #contact page template
+               contact.html #contact page template 
+
+Pushing the app to Heroku with Heroku Postgres as a service
+============================================================
+
+In preparation to push your app to Heroku, first install [Heroku CLI](https://toolbelt.heroku.com/osx).
+
+Create an app on Heroku
+```
+heroku create dspcfboilerplate
+``` 
+
+Clone the dspcfboilerplate app
+```
+git clone https://github.com/vatsan/dspcfboilerplate.git
+```
+
+Switch to the heroku branch in the repo
+```
+cd dspcfboilerplate
+git checkout heroku
+```
+
+Create an app on Heroku
+```
+heroku create dspcfboilerplate
+```
+
+Take a look at the Procfile to get an understanding of how to spin-up the app. 
+
+Create a Heroku Postgres instance and attach it to your app.
+You can spin-up a [Heroku Postgres](https://elements.heroku.com/addons/heroku-postgresql) service instance from the [add-ons section](https://elements.heroku.com/addons) on Heroku. Once you spin it up, bind it to your dspcfapp from the UI or via commandline.
 
 
-Starting the app locally
-========================
+You can push the app to Heroku using the following command.
+```
+git add .
+git commit -m '<commit message>'
+git push heroku heroku:master
+```
 
-1. Create a file ```dspcfapp/user.cred``` with the relevant database access credentials like the following. This file will not be added to your version control (the `.gitignore` file will filter it out):
+You should see something like the following:
 
-        [database_creds]
-        host: <YOUR HOSTNAME>
-        port: <YOUR PORT>
-        user: <YOUR USERNAME>
-        database: <YOUR DATABASE>
-        password: <YOUR PASSWORD>
+```
+Counting objects: 238, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (151/151), done.
+Writing objects: 100% (238/238), 6.84 MiB | 260.00 KiB/s, done.
+Total 238 (delta 105), reused 167 (delta 67)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Python app detected
+remote: -----> Installing python-2.7.12
+remote:      $ pip install -r requirements.txt
+remote:        Collecting psycopg2 (from -r requirements.txt (line 1))
+remote:          Downloading psycopg2-2.6.2.tar.gz (376kB)
+remote:        Collecting flask-assets (from -r requirements.txt (line 2))
+remote:          Downloading Flask-Assets-0.11.tar.gz
+remote:        Collecting jsmin (from -r requirements.txt (line 3))
+remote:          Downloading jsmin-2.2.1.tar.gz
+remote:        Collecting pandas (from -r requirements.txt (line 4))
+remote:          Downloading pandas-0.18.1-cp27-cp27m-manylinux1_x86_64.whl (14.2MB)
+remote:        Collecting gunicorn (from -r requirements.txt (line 5))
+remote:          Downloading gunicorn-19.6.0-py2.py3-none-any.whl (114kB)
+remote:        Collecting Flask>=0.8 (from flask-assets->-r requirements.txt (line 2))
+remote:          Downloading Flask-0.11.1-py2.py3-none-any.whl (80kB)
+remote:        Collecting webassets>=0.11 (from flask-assets->-r requirements.txt (line 2))
+remote:          Downloading webassets-0.11.1.tar.gz (171kB)
+remote:        Collecting pytz>=2011k (from pandas->-r requirements.txt (line 4))
+remote:          Downloading pytz-2016.6.1-py2.py3-none-any.whl (481kB)
+remote:        Collecting python-dateutil (from pandas->-r requirements.txt (line 4))
+remote:          Downloading python_dateutil-2.5.3-py2.py3-none-any.whl (201kB)
+remote:        Collecting numpy>=1.7.0 (from pandas->-r requirements.txt (line 4))
+remote:          Downloading numpy-1.11.1-cp27-cp27m-manylinux1_x86_64.whl (15.3MB)
+remote:        Collecting itsdangerous>=0.21 (from Flask>=0.8->flask-assets->-r requirements.txt (line 2))
+remote:          Downloading itsdangerous-0.24.tar.gz (46kB)
+remote:        Collecting Werkzeug>=0.7 (from Flask>=0.8->flask-assets->-r requirements.txt (line 2))
+remote:          Downloading Werkzeug-0.11.10-py2.py3-none-any.whl (306kB)
+remote:        Collecting Jinja2>=2.4 (from Flask>=0.8->flask-assets->-r requirements.txt (line 2))
+remote:          Downloading Jinja2-2.8-py2.py3-none-any.whl (263kB)
+remote:        Collecting click>=2.0 (from Flask>=0.8->flask-assets->-r requirements.txt (line 2))
+remote:          Downloading click-6.6.tar.gz (283kB)
+remote:        Collecting six>=1.5 (from python-dateutil->pandas->-r requirements.txt (line 4))
+remote:          Downloading six-1.10.0-py2.py3-none-any.whl
+remote:        Collecting MarkupSafe (from Jinja2>=2.4->Flask>=0.8->flask-assets->-r requirements.txt (line 2))
+remote:          Downloading MarkupSafe-0.23.tar.gz
+remote:        Installing collected packages: psycopg2, itsdangerous, Werkzeug, MarkupSafe, Jinja2, click, Flask, webassets, flask-assets, jsmin, pytz, six, python-dateutil, numpy, pandas, gunicorn
+remote:          Running setup.py install for psycopg2: started
+remote:            Running setup.py install for psycopg2: finished with status 'done'
+remote:          Running setup.py install for itsdangerous: started
+remote:            Running setup.py install for itsdangerous: finished with status 'done'
+remote:          Running setup.py install for MarkupSafe: started
+remote:            Running setup.py install for MarkupSafe: finished with status 'done'
+remote:          Running setup.py install for click: started
+remote:            Running setup.py install for click: finished with status 'done'
+remote:          Running setup.py install for webassets: started
+remote:            Running setup.py install for webassets: finished with status 'done'
+remote:          Running setup.py install for flask-assets: started
+remote:            Running setup.py install for flask-assets: finished with status 'done'
+remote:          Running setup.py install for jsmin: started
+remote:            Running setup.py install for jsmin: finished with status 'done'
+remote:        Successfully installed Flask-0.11.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.10 click-6.6 flask-assets-0.11 gunicorn-19.6.0 itsdangerous-0.24 jsmin-2.2.1 numpy-1.11.1 pandas-0.18.1 psycopg2-2.6.2 python-dateutil-2.5.3 pytz-2016.6.1 six-1.10.0 webassets-0.11.1
+remote:
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 77.4M
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://dspcfboilerplate.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/dspcfboilerplate.git
+ * [new branch]      heroku -> master
+ ```
 
+ The app will now be accessible at: [https://dspcfboilerplate.herokuapp.com/](https://dspcfboilerplate.herokuapp.com/)
 
-2. Ensure your local machine can talk to the environment where the data resides in (ex: you may need to connect to a VPN if your data resides on a BDS cluster behind a firewall).
-3. Run the following from the root directory
-
-        ./deploy
-
-This will bring up the app on `http://localhost:9090`
-
-Pushing the app to PCF with user-provided service
-==================================================
-
-A user-provided service to let your app know what database, host and port to connect to using what credentials.
-If you are doing all your datascience on a Greenplum or HAWQ cluster, this is the preferred way of binding your app to the cluster.
-
-1. Create User Provided Service for database credentials (first time only)
-
-        dsmiot [master●●] cf cups dspcfboilerplatecreds -p '{"host":"<HOST>","user":"<USER>","password":"<PASSWORD>", "database":"<DATABASE>", "port":"<PORT>" }'
-
-2. Push the app to your PCF instance (assuming you've set one up)
-
-        dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml    
-
-3. Bind the User Provided Service to the app (first time only)
-
-        dsmiot [master●●] cf bind-service dspcfboilerplate dspcfboilerplatecreds
-
-The app should now be accessible on your PCF instance. 
-
-Pushing the app to PCF with ElephantSQL as a service
-=====================================================
-
-If you are running your app on PWS (run.pivotal.io) and would like to bind your app to say a `tiny turtle` ElephantSQL service you may have created, you can follow these steps:
-
-1. Edit the dspcfboilerplate/deploy file and change the environment variable `SERVICE_NAME` to the name of your ElephantSQL service instance(ex: `elephantsql-dev`)
-
-2. Push the app to your PCF instance
-
-        dsmiot [master●●] cf push dspcfboilerplate  -f manifest.yml
-
-3. Bind your ElphantSQL service to your app (first time only)
-	
-        dsmiot [master●●] cf bind-service dspcfboilerplate elephantsql-dev
- 
-Your app will now use your ElephantSQL service as the backend database to connect to.
 
 Screenshots
 ============
