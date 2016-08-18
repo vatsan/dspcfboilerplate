@@ -106,4 +106,5 @@ def main():
        Start the application
     """
     app_port = int(os.getenv('PORT')) if os.getenv('PORT') else DEFAULT_PORT
+    logger.info('###port:'+str(app_port))
     app.run(host='0.0.0.0', debug= True if not os.getenv('PORT') else False, port = app_port)
