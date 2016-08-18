@@ -101,9 +101,6 @@ def sample_heatmap():
     logger.info('sample_heatmap: {0} rows'.format(len(df)))
     return jsonify(hmap=[{'machine_id':r['id'], 'hour':r['hour'], 'prob':r['prob']} for indx, r in df.iterrows()])    
 
-def main():
-    """
-       Start the application
-    """
-    app_port = int(os.getenv('PORT')) if os.getenv('PORT') else DEFAULT_PORT
-    app.run(host='0.0.0.0', debug= True if not os.getenv('PORT') else False, port = app_port)
+if __name__ == '__main__':
+    app_port = int(os.environ.get('PORT',33512))
+    app.run(host='0.0.0.0',  port = app_port)
