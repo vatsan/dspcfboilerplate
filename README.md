@@ -82,7 +82,12 @@ git checkout heroku
 
 Create an app on Heroku
 ```
-heroku create dspcfboilerplate
+heroku create --app dspcfboilerplate
+```
+
+If you have multiple orgs on Heroku, specify the org name in which you'd like to create this app.
+```
+heroku create --app dspcfboilerplate --org <ORG_NAME>
 ```
 
 Take a look at the Procfile to get an understanding of how to spin-up the app. 
