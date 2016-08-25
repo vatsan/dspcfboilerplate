@@ -69,11 +69,6 @@ Pushing the app to Heroku with Heroku Postgres as a service
 
 In preparation to push your app to Heroku, first install [Heroku CLI](https://toolbelt.heroku.com/osx).
 
-Create an app on Heroku
-```
-heroku create dspcfboilerplate
-``` 
-
 Clone the dspcfboilerplate app
 ```
 git clone https://github.com/vatsan/dspcfboilerplate.git
