@@ -80,7 +80,7 @@ cd dspcfboilerplate
 git checkout heroku
 ```
 
-Login to your Heroku org, space
+Login to your Heroku org, space (enter the credentials requested)
 
 ```
 heroku login
@@ -98,9 +98,24 @@ heroku create --app dspcfboilerplate --org <ORG_NAME> --space <SPACE_NAME>
 
 Take a look at the Procfile to get an understanding of how to spin-up the app. 
 
-Create a Heroku Postgres instance and attach it to your app.
+Create a Heroku Postgres instance and attach it to your app. If you are using a [private space](https://www.heroku.com/private-spaces), note that Heroku postgres may be available only in certain "regions", so be sure to spin-up your private space only in the regions which also support Heroku Postgres.
 You can spin-up a [Heroku Postgres](https://elements.heroku.com/addons/heroku-postgresql) service instance from the [add-ons section](https://elements.heroku.com/addons) on Heroku. Once you spin it up, bind it to your dspcfapp from the UI or via commandline.
 
+Attach a remote to your repo like so:
+
+```
+heroku git:remote -a dspcfboilerplate
+```
+
+You should see something like so:
+
+```
+vatsan  ~/code/dspcfboilerplate   heroku  git remote -v
+heroku 	https://git.heroku.com/dspcfboilerplate.git (fetch)
+heroku 	https://git.heroku.com/dspcfboilerplate.git (push)
+origin 	https://github.com/vatsan/dspcfboilerplate.git (fetch)
+origin 	https://github.com/vatsan/dspcfboilerplate.git (push)
+```
 
 You can push the app to Heroku using the following command.
 ```
